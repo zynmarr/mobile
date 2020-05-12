@@ -247,26 +247,7 @@ class _MessageState extends State<Message> {
                     "Kyle",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRinY4vLmj_JVTSedukEYnvTIWLVZFvY__GWupSreUQEkVnNw2H&usqp=CAU",
                   ),
-                  onlineUser(
-                    "Hyle",
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTk2E0REGTi4yBPIiTCSMuvaG0XYktXq34S4gA-0xsE_CLKexuS&usqp=CAU",
-                  ),
-                  onlineUser(
-                    "Jhon",
-                    "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-                  ),
-                  onlineUser(
-                    "Jason",
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png",
-                  ),
-                  onlineUser(
-                    "Michael",
-                    "https://lh3.googleusercontent.com/proxy/nmAjgJMnAkfCWaUmVgj-ZG70hzp6Ri-4iyHk_3CcApr_3YEnzPOs1S3zi2rED02IfbeR28d5dUrCcoAVIp8o-fp7_7ToO3I",
-                  ),
-                  onlineUser(
-                    "Muammar",
-                    "https://cdn2.vectorstock.com/i/thumb-large/34/96/flat-busness-man-user-profile-avatar-in-suit-vector-4333496.jpg",
-                  ),
+                  
                 ],
               ),
             ),
@@ -278,7 +259,7 @@ class _MessageState extends State<Message> {
                   bottom: BorderSide(
                       color: Colors.grey[300],
                       style: BorderStyle.solid,
-                      width: 2.0),
+                      width: 2.0,),
                 ),
               ),
             ),
@@ -288,7 +269,7 @@ class _MessageState extends State<Message> {
                 children: <Widget>[
                   showMessage(
                     "Muammar Khadafi",
-                    "https://lh3.googleusercontent.com/proxy/nmAjgJMnAkfCWaUmVgj-ZG70hzp6Ri-4iyHk_3CcApr_3YEnzPOs1S3zi2rED02IfbeR28d5dUrCcoAVIp8o-fp7_7ToO3I",
+                    "https://i.imgur.com/74sByqd.jpg",
                     "2",
                     "10.00",
                     "Welcome to my aplication",
@@ -300,27 +281,27 @@ class _MessageState extends State<Message> {
                     "10.00",
                     "What kind of music do you like?",
                   ),
-                  showMessage(
-                    "Stefan",
-                    "https://www.swamisantadasinstituteofculture.com/wp-content/uploads/2019/09/FakeDP.jpeg",
-                    "20",
-                    "10.00",
-                    "How are you?",
-                  ),
-                  showMessage(
-                    "David Williams",
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png",
-                    "2",
-                    "10.00",
-                    "Welcome to my aplication",
-                  ),
-                  showMessage(
-                    "Muammar Khadafi",
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png",
-                    "2",
-                    "10.00",
-                    "Welcome to my aplication",
-                  ),
+                  // showMessage(
+                  //   "Stefan",
+                  //   "https://www.swamisantadasinstituteofculture.com/wp-content/uploads/2019/09/FakeDP.jpeg",
+                  //   "20",
+                  //   "10.00",
+                  //   "How are you?",
+                  // ),
+                  // showMessage(
+                  //   "David Williams",
+                  //   "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png",
+                  //   "2",
+                  //   "10.00",
+                  //   "Welcome to my aplication",
+                  // ),
+                  // showMessage(
+                  //   "Muammar Khadafi",
+                  //   "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png",
+                  //   "2",
+                  //   "10.00",
+                  //   "Welcome to my aplication",
+                  // ),
                 ],
               ),
             ),

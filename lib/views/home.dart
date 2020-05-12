@@ -4,6 +4,7 @@ import 'package:mita_apps/views/message.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/rendering.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _HomeState extends State<Home> {
           image,
           fit: BoxFit.fill,
           repeat: ImageRepeat.noRepeat,
-          height: 280.0,
+          height: MediaQuery.of(context).size.height / 3,
           width: MediaQuery.of(context).size.width,
         ),
         title: GFListTile(
@@ -64,15 +65,17 @@ class _HomeState extends State<Home> {
     ];
 
     final List<String> imageList = [
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      "https://eugenephotographer.com/wp-content/uploads/2020/01/acting-headshots-for-Maddie-Blumm.jpg",
-      "https://www.swamisantadasinstituteofculture.com/wp-content/uploads/2019/09/FakeDP.jpeg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTKM9BUy0eVYn8_C3sg0J40Oa5MlWpFbS83fleauNdF4W5HQQJQ&usqp=CAU",
+      "https://i.imgur.com/74sByqd.jpg",
+      "https://cdn3.vectorstock.com/i/1000x1000/01/77/businesswoman-character-avatar-icon-vector-12800177.jpg",
     ];
 
     return Scaffold(
+      // appBar: AppBar(backgroundColor: Colors.blue,),
       body: Container(
+        height: MediaQuery.of(context).size.height,
         // padding: EdgeInsets.only(bottom: 30),
-        child: Column(
+        child: ListView(
           children: <Widget>[
             Container(
               width: MediaQuery.of(context).size.width,
@@ -81,7 +84,7 @@ class _HomeState extends State<Home> {
                 gradient: LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
-                  colors: [Color(0xFFffc247), Color(0xFFff249c)],
+                  colors: [Colors.white, Colors.blue],
                 ),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
@@ -102,23 +105,23 @@ class _HomeState extends State<Home> {
               ),
             ),
             Container(
-              height: 440,
+              height: MediaQuery.of(context).size.height,
               transform: Matrix4.translationValues(0.0, -88.0, 0.0),
               child: Column(
                 children: <Widget>[
-                  Swiper(
-                    itemBuilder: (BuildContext context, int index) {
-                      return infoUser(nameList[index], imageList[index]);
-                    },
-                    itemHeight: 435,
-                    itemWidth: 400,
-                    layout: SwiperLayout.STACK,
-                    itemCount: nameList.length,
-                    scrollDirection: Axis.vertical,
-                    loop: false,
-                  ),
+                  // Swiper(
+                  //   itemBuilder: (BuildContext context, int index) {
+                  //     return infoUser(nameList[index], imageList[index]);
+                  //   },
+                  //   itemHeight: 435,
+                  //   itemWidth: 400,
+                  //   layout: SwiperLayout.DEFAULT,
+                  //   itemCount: nameList.length,
+                  //   // scrollDirection: Axis.vertical,
+                  //   loop: false,
+                  // ),
                   Container(
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height/ 4,
                     transform: Matrix4.translationValues(0.0, -90.0, 0.0),
                     // margin: EdgeInsets.only(bottom: 100),
                     child: Row(
