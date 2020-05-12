@@ -76,139 +76,141 @@ class _HomeState extends State<Home> {
     ];
 
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        // padding: EdgeInsets.only(bottom: 30),
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 5,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [Colors.blueAccent, Colors.blue],
-                  ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
-                  ),
-                ),
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          // padding: EdgeInsets.only(bottom: 30),
+          child: Stack(
+            children: <Widget>[
+              Positioned(
                 child: Container(
-                  padding: EdgeInsets.only(left: 20, top: 40),
-                  child: Text(
-                    "Discover",
-                    style: TextStyle(
-                      fontFamily: "Viga",
-                      fontSize: 30,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 5,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [Colors.blueAccent, Colors.blue],
+                    ),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: Container(
+                    padding: EdgeInsets.only(left: 20, top: 40),
+                    child: Text(
+                      "Discover",
+                      style: TextStyle(
+                        fontFamily: "Viga",
+                        fontSize: 30,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Positioned(
-              // height: MediaQuery.of(context).size.height /2,
-              child: Container(
-                height: MediaQuery.of(context).size.height,
-                // color: Colors.black,
-                // transform: Matrix4.translationValues(0.0, 50.0, 0.0),
-                padding: EdgeInsets.only(top: 50),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(left: 0),
-                      transform: Matrix4.translationValues(17.0, 0.0, 0.0),
-                      child: Swiper(
-                        itemBuilder: (BuildContext context, int index) {
-                          return infoUser(nameList[index], imageList[index]);
-                        },
-                        itemHeight: MediaQuery.of(context).size.height / 1.5,
-                        itemWidth: MediaQuery.of(context).size.height,
-                        layout: SwiperLayout.TINDER,
-                        itemCount: nameList.length,
-                        scrollDirection: Axis.vertical,
-                        loop: true,
+              Positioned(
+                // height: MediaQuery.of(context).size.height /2,
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  // color: Colors.black,
+                  // transform: Matrix4.translationValues(0.0, 50.0, 0.0),
+                  padding: EdgeInsets.only(top: 50),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(left: 0),
+                        transform: Matrix4.translationValues(17.0, 0.0, 0.0),
+                        child: Swiper(
+                          itemBuilder: (BuildContext context, int index) {
+                            return infoUser(nameList[index], imageList[index]);
+                          },
+                          itemHeight: MediaQuery.of(context).size.height / 1.5,
+                          itemWidth: MediaQuery.of(context).size.height,
+                          layout: SwiperLayout.TINDER,
+                          itemCount: nameList.length,
+                          scrollDirection: Axis.vertical,
+                          loop: true,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height / 10,
-                      transform: Matrix4.translationValues(0.0, -30.0, 0.0),
-                      // margin: EdgeInsets.only(bottom: 100),
-                      color: Colors.black,
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Colors.white),
-                              child: IconButton(
-                                icon: FaIcon(
-                                  FontAwesomeIcons.googlePlusG,
-                                  size: 25,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () {
-                                  print("Pressed");
-                                },
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Colors.white),
-                              child: IconButton(
-                                icon: FaIcon(
-                                  FontAwesomeIcons.googlePlusG,
-                                  size: 25,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () {
-                                  print("Pressed");
-                                },
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Colors.white),
-                              child: IconButton(
-                                icon: FaIcon(
-                                  FontAwesomeIcons.googlePlusG,
-                                  size: 25,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () {
-                                  print("Pressed");
-                                },
-                              ),
-                            ),
-                          ),
-                        ],
+                      SizedBox(
+                        height: 50,
                       ),
-                    ),
-                  ],
+                      Container(
+                        height: MediaQuery.of(context).size.height / 10,
+                        transform: Matrix4.translationValues(0.0, -30.0, 0.0),
+                        // margin: EdgeInsets.only(bottom: 100),
+                        color: Colors.black,
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: Container(
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Colors.white),
+                                child: IconButton(
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.googlePlusG,
+                                    size: 25,
+                                    color: Colors.red,
+                                  ),
+                                  onPressed: () {
+                                    print("Pressed");
+                                  },
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Colors.white),
+                                child: IconButton(
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.googlePlusG,
+                                    size: 25,
+                                    color: Colors.red,
+                                  ),
+                                  onPressed: () {
+                                    print("Pressed");
+                                  },
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Colors.white),
+                                child: IconButton(
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.googlePlusG,
+                                    size: 25,
+                                    color: Colors.red,
+                                  ),
+                                  onPressed: () {
+                                    print("Pressed");
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -21,125 +21,74 @@ class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: ListView(
-          children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 3.5,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFF2facfe), Color(0xFF2acfff)],
+      body: SafeArea(
+        child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    IconButton(icon: Icon(Icons.settings, size: 20.0, color: Colors.black54,), onPressed: (){}),
+                    IconButton(icon: Icon(Icons.mode_edit,size: 20.0, color: Colors.black54,), onPressed: (){}),
+                  ],
                 ),
-              ),
-              child: Center(
-                child: Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  height: MediaQuery.of(context).size.width / 2.5,
-                  transform: Matrix4.translationValues(0, 90.0, 0),
-                  padding: EdgeInsets.all(50),
+                Container(
+                  width: 120.0,
+                  height: 120.0,
                   decoration: BoxDecoration(
-                    color: Colors.grey[400],
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(150.0),
+                    border: Border.all(color: Color(0xFFfa5a19), width: 0.5),
                     image: DecorationImage(
-                      image: NetworkImage(
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxw7cULzZFMCUW9iQQKn9zjvdLhuk2QwEKRIYMY40uQpAUfhE1&usqp=CAU'),
+                      image: AssetImage('assets/img/p3.jpg'),
+                      fit: BoxFit.cover
+                    )
+                  ),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Color(0xFFfa5a19),
+                      ),
+                      child: IconButton(
+                        icon: Icon(Icons.add_a_photo, size: 14.0, color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
-              ),
+                SizedBox(height: 10.0,),
+                Container(
+                  width: MediaQuery.of(context).size.width/ 1.8,
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "John Alexa, 23",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0
+                        ),
+                      ),
+                      SizedBox(height: 5.0,),
+                      Text(
+                        '" Jadilah pribadi yang menantang masa depan, bukan pengecut yang aman di zona nyaman "',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 12.0,
+                          color: Colors.black45
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  children: <Widget>[],
+                )
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 70),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: MediaQuery.of(context).size.height/ 10,
-                    child: RaisedButton(
-                      color: Colors.white,
-                      onPressed: () {
-                        print("oke");
-                      },
-                      child: Row(
-                        children: <Widget>[
-                          Icon(FontAwesomeIcons.cog),
-                          Padding(
-                            padding: EdgeInsets.only(left: 5),
-                          ),
-                          Text("Setting")
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 3),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height/ 10,
-                    child: RaisedButton(
-                      color: Colors.white,
-                      onPressed: () {},
-                      child: Row(
-                        children: <Widget>[
-                          Icon(FontAwesomeIcons.paperPlane),
-                          Padding(
-                            padding: EdgeInsets.only(left: 5),
-                          ),
-                          Text("Feedback")
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 3),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height/ 10,
-                    child: RaisedButton(
-                      color: Colors.white,
-                      onPressed: () {},
-                      child: Row(
-                        children: <Widget>[
-                          Icon(FontAwesomeIcons.bell),
-                          Padding(
-                            padding: EdgeInsets.only(left: 5),
-                          ),
-                          Text("Notification")
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 3),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height/ 10,
-                    child: RaisedButton(
-                      color: Colors.white,
-                      onPressed: () {
-                        // signOut();
-                      },
-                      child: Row(
-                        children: <Widget>[
-                          Icon(FontAwesomeIcons.powerOff),
-                          Padding(
-                            padding: EdgeInsets.only(left: 5),
-                          ),
-                          Text("Log Out")
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
       ),
     );
   }
