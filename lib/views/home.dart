@@ -17,14 +17,17 @@ class _HomeState extends State<Home> {
     /* Card */
     Widget infoUser(String listName, image) {
       return GFCard(
-        image: Image.network(
+        height: MediaQuery.of(context).size.height,
+        image: Image.asset(
           image,
           fit: BoxFit.fill,
           repeat: ImageRepeat.noRepeat,
-          height: MediaQuery.of(context).size.height / 3,
+          height: MediaQuery.of(context).size.height / 2.3,
           width: MediaQuery.of(context).size.width,
         ),
         title: GFListTile(
+          margin: EdgeInsets.all(10),
+          // color: Colors.green,
           title: Text(
             listName,
             style: TextStyle(
@@ -45,13 +48,15 @@ class _HomeState extends State<Home> {
             ),
           ),
           icon: GFIconButton(
-            color: Colors.white,
             onPressed: () {
-              print("Oke");
+              setState(() {
+                print("Info");
+              });
             },
+            color: GFColors.INFO,
             icon: Icon(
               Icons.info,
-              color: Colors.grey,
+              size: 20,
             ),
           ),
         ),
@@ -65,128 +70,142 @@ class _HomeState extends State<Home> {
     ];
 
     final List<String> imageList = [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTKM9BUy0eVYn8_C3sg0J40Oa5MlWpFbS83fleauNdF4W5HQQJQ&usqp=CAU",
-      "https://i.imgur.com/74sByqd.jpg",
-      "https://cdn3.vectorstock.com/i/1000x1000/01/77/businesswoman-character-avatar-icon-vector-12800177.jpg",
+      "assets/img/p1.jpg",
+      "assets/img/p2.jpg",
+      "assets/img/p3.jpg",
     ];
 
     return Scaffold(
-      // appBar: AppBar(backgroundColor: Colors.blue,),
       body: Container(
         height: MediaQuery.of(context).size.height,
         // padding: EdgeInsets.only(bottom: 30),
-        child: ListView(
+        child: Stack(
           children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 150,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [Colors.white, Colors.blue],
-                ),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
-                ),
-              ),
+            Positioned(
               child: Container(
-                padding: EdgeInsets.only(left: 20, top: 30),
-                child: Text(
-                  "Discover",
-                  style: TextStyle(
-                    fontFamily: "Viga",
-                    fontSize: 30,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 5,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [Colors.blueAccent, Colors.blue],
+                  ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
+                  ),
+                ),
+                child: Container(
+                  padding: EdgeInsets.only(left: 20, top: 40),
+                  child: Text(
+                    "Discover",
+                    style: TextStyle(
+                      fontFamily: "Viga",
+                      fontSize: 30,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
             ),
-            Container(
-              height: MediaQuery.of(context).size.height,
-              transform: Matrix4.translationValues(0.0, -88.0, 0.0),
-              child: Column(
-                children: <Widget>[
-                  // Swiper(
-                  //   itemBuilder: (BuildContext context, int index) {
-                  //     return infoUser(nameList[index], imageList[index]);
-                  //   },
-                  //   itemHeight: 435,
-                  //   itemWidth: 400,
-                  //   layout: SwiperLayout.DEFAULT,
-                  //   itemCount: nameList.length,
-                  //   // scrollDirection: Axis.vertical,
-                  //   loop: false,
-                  // ),
-                  Container(
-                    height: MediaQuery.of(context).size.height/ 4,
-                    transform: Matrix4.translationValues(0.0, -90.0, 0.0),
-                    // margin: EdgeInsets.only(bottom: 100),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.white),
-                            child: IconButton(
-                              icon: FaIcon(
-                                FontAwesomeIcons.googlePlusG,
-                                size: 25,
-                                color: Colors.red,
-                              ),
-                              onPressed: () {
-                                print("Pressed");
-                              },
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.white),
-                            child: IconButton(
-                              icon: FaIcon(
-                                FontAwesomeIcons.googlePlusG,
-                                size: 25,
-                                color: Colors.red,
-                              ),
-                              onPressed: () {
-                                print("Pressed");
-                              },
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.white),
-                            child: IconButton(
-                              icon: FaIcon(
-                                FontAwesomeIcons.googlePlusG,
-                                size: 25,
-                                color: Colors.red,
-                              ),
-                              onPressed: () {
-                                print("Pressed");
-                              },
-                            ),
-                          ),
-                        ),
-                      ],
+            Positioned(
+              // height: MediaQuery.of(context).size.height /2,
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                // color: Colors.black,
+                // transform: Matrix4.translationValues(0.0, 50.0, 0.0),
+                padding: EdgeInsets.only(top: 50),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(left: 0),
+                      transform: Matrix4.translationValues(17.0, 0.0, 0.0),
+                      child: Swiper(
+                        itemBuilder: (BuildContext context, int index) {
+                          return infoUser(nameList[index], imageList[index]);
+                        },
+                        itemHeight: MediaQuery.of(context).size.height / 1.5,
+                        itemWidth: MediaQuery.of(context).size.height,
+                        layout: SwiperLayout.TINDER,
+                        itemCount: nameList.length,
+                        scrollDirection: Axis.vertical,
+                        loop: true,
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height / 10,
+                      transform: Matrix4.translationValues(0.0, -30.0, 0.0),
+                      // margin: EdgeInsets.only(bottom: 100),
+                      color: Colors.black,
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.white),
+                              child: IconButton(
+                                icon: FaIcon(
+                                  FontAwesomeIcons.googlePlusG,
+                                  size: 25,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  print("Pressed");
+                                },
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.white),
+                              child: IconButton(
+                                icon: FaIcon(
+                                  FontAwesomeIcons.googlePlusG,
+                                  size: 25,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  print("Pressed");
+                                },
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.white),
+                              child: IconButton(
+                                icon: FaIcon(
+                                  FontAwesomeIcons.googlePlusG,
+                                  size: 25,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  print("Pressed");
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
