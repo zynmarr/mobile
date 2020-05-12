@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-<<<<<<< HEAD
 import 'package:mita_apps/main.dart';
-=======
->>>>>>> f1fb9006a2f115a3861e19fc53b825a5506fd36a
 
 class LoginWidget extends StatefulWidget {
   @override
@@ -106,13 +103,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                   borderRadius: BorderRadius.circular(5.0)),
               padding: const EdgeInsets.all(0.0),
               onPressed: () {
-<<<<<<< HEAD
                 setState(() {
                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext)=> HomePage()));
                 });
-=======
-                
->>>>>>> f1fb9006a2f115a3861e19fc53b825a5506fd36a
               },
               color: Colors.transparent,
               child: Ink(

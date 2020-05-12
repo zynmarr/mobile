@@ -29,11 +29,7 @@ enum LoginStatus { notSignin, signIn }
 
 class _LoginState extends State<Login> {
   LoginStatus _loginStatus = LoginStatus.notSignin;
-<<<<<<< HEAD
-  String pesan = "Login Gagal";
-=======
   String pesan = "";
->>>>>>> f1fb9006a2f115a3861e19fc53b825a5506fd36a
   bool login = true;
   @override
   void initState() {
