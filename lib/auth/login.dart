@@ -29,7 +29,8 @@ class _LoginWidgetState extends State<LoginWidget> {
         children: <Widget>[
           Container(
             // margin: EdgeInsets.only(left: 20, right: 20),
-            height: MediaQuery.of(context).size.height / 3.7,
+//            height: MediaQuery.of(context).size.height / 3.7,
+            padding: EdgeInsets.symmetric(vertical: 10.0),
             width: MediaQuery.of(context).size.width / 1.1,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -60,7 +61,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width / 1.2,
-                  margin: EdgeInsets.only(top: 15, left: 20, right: 20),
+                  margin: EdgeInsets.only(top: 15, left: 20, right: 20, bottom: 40.0),
                   child: TextFormField(
                     validator: (e) {
                       if (e.isEmpty) {

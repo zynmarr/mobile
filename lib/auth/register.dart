@@ -25,8 +25,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         children: <Widget>[
           Container(
             // margin: EdgeInsets.only(left: 20, right: 20),
-            height: MediaQuery.of(context).size.height / 2.9,
+//            height: MediaQuery.of(context).size.height / 2.9,
             width: MediaQuery.of(context).size.width / 1.1,
+            padding: EdgeInsets.symmetric(vertical: 20.0),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(5),
@@ -77,7 +78,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width / 1.2,
-                  margin: EdgeInsets.only(top: 10, left: 20, right: 20),
+                  margin: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 40.0),
                   child: TextFormField(
                     validator: (e){
                       if (e.isEmpty) {
