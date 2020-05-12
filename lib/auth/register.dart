@@ -25,7 +25,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         children: <Widget>[
           Container(
             // margin: EdgeInsets.only(left: 20, right: 20),
-            height: MediaQuery.of(context).size.height / 3.4,
+            height: MediaQuery.of(context).size.height / 2.9,
             width: MediaQuery.of(context).size.width / 1.1,
             decoration: BoxDecoration(
               color: Colors.white,

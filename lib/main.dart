@@ -34,7 +34,6 @@ class _LoginState extends State<Login> {
   @override
   void initState() {
     super.initState();
-    
   }
 
   @override
@@ -59,45 +58,19 @@ class _LoginState extends State<Login> {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height / 2.8,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0xFFffc247), Color(0xFFff249c)],
-                    ),
-                    borderRadius:
-                        BorderRadius.only(bottomLeft: Radius.circular(90)),
+                    // gradient: LinearGradient(
+                    //   begin: Alignment.topCenter,
+                    //   end: Alignment.bottomCenter,
+                    //   colors: [Color(0xFFffc247), Color(0xFFff249c)],
+                    // ),
+                    // color: Colors.white,
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Spacer(),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Icon(
-                          Icons.polymer,
-                          size: 70,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Spacer(),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            bottom: 30,
-                            right: 32,
-                          ),
-                          child: Text(
-                            'Welcome',
-                            style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  child: Image.asset(
+                    'assets/img/logo.png',
+                    // color: Colors.transparent,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 10,
+                    scale: 4,
                   ),
                 ),
                 Padding(padding: EdgeInsets.only(top: 10)),
@@ -116,7 +89,7 @@ class _LoginState extends State<Login> {
                           width: MediaQuery.of(context).size.width / 3.2,
                           height: MediaQuery.of(context).size.height / 19,
                           child: RaisedButton(
-                            color: login == false ? Colors.grey : Colors.white,
+                            color: login == false ? Colors.transparent : Colors.white,
                             splashColor: Colors.white10,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
@@ -126,9 +99,13 @@ class _LoginState extends State<Login> {
                                 login = true;
                               });
                             },
-                            child: Text("Exiting", style: TextStyle(
-                              color: login == false ? Colors.white : Colors.black
-                            ),),
+                            child: Text(
+                              "Exiting",
+                              style: TextStyle(
+                                  color: login == false
+                                      ? Colors.white
+                                      : Colors.black),
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -138,7 +115,7 @@ class _LoginState extends State<Login> {
                           width: MediaQuery.of(context).size.width / 3.2,
                           height: MediaQuery.of(context).size.height / 19,
                           child: RaisedButton(
-                            color: login == true ? Colors.grey : Colors.white,
+                            color: login == true ? Colors.transparent : Colors.white,
                             splashColor: Colors.white10,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
@@ -150,7 +127,10 @@ class _LoginState extends State<Login> {
                             },
                             child: Text(
                               "New",
-                              style: TextStyle(color: login == true ? Colors.white : Colors.black,),
+                              style: TextStyle(
+                                color:
+                                    login == true ? Colors.white : Colors.black,
+                              ),
                             ),
                           ),
                         ),
@@ -159,7 +139,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.only(top: 8)),
-                login == true ? LoginWidget(): RegisterWidget(),
+                login == true ? LoginWidget() : RegisterWidget(),
               ],
             ),
           ),
