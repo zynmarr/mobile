@@ -186,6 +186,7 @@ class _HomePageState extends State<HomePage> {
       length: 3,
       child: Scaffold(
         body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
             Home(),
             Message(),

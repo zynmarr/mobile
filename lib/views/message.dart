@@ -281,13 +281,13 @@ class _MessageState extends State<Message> {
                     "10.00",
                     "What kind of music do you like?",
                   ),
-                  // showMessage(
-                  //   "Stefan",
-                  //   "https://www.swamisantadasinstituteofculture.com/wp-content/uploads/2019/09/FakeDP.jpeg",
-                  //   "20",
-                  //   "10.00",
-                  //   "How are you?",
-                  // ),
+                  showMessage(
+                    "Stefan",
+                    "https://www.swamisantadasinstituteofculture.com/wp-content/uploads/2019/09/FakeDP.jpeg",
+                    "20",
+                    "10.00",
+                    "How are you?",
+                  ),
                   // showMessage(
                   //   "David Williams",
                   //   "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png",
