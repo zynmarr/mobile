@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'dart:async';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class Account extends StatefulWidget {
   // final VoidCallback signOut;
@@ -17,7 +14,12 @@ class _AccountState extends State<Account> {
   //     widget.signOut();
   //   });
   // }
-
+  bool verified = false;
+  final List<String> imageList = [
+      "assets/img/p1.jpg",
+      "assets/img/p2.jpg",
+      "assets/img/p3.jpg",
+    ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,24 +27,27 @@ class _AccountState extends State<Account> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  IconButton(
-                      icon: Icon(
-                        Icons.settings,
-                        size: 20.0,
-                        color: Colors.black54,
-                      ),
-                      onPressed: () {}),
-                  IconButton(
-                      icon: Icon(
-                        Icons.mode_edit,
-                        size: 20.0,
-                        color: Colors.black54,
-                      ),
-                      onPressed: () {}),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    IconButton(
+                        icon: Icon(
+                          Icons.settings,
+                          size: 22.0,
+                          color: Colors.black54,
+                        ),
+                        onPressed: () {}),
+                    IconButton(
+                        icon: Icon(
+                          Icons.mode_edit,
+                          size: 22.0,
+                          color: Colors.black54,
+                        ),
+                        onPressed: () {}),
+                  ],
+                ),
               ),
               Container(
                 width: 120.0,
@@ -95,8 +100,58 @@ class _AccountState extends State<Account> {
                 ),
               ),
               Row(
-                children: <Widget>[],
-              )
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.verified_user), 
+                        color: verified == true ? Color(0xFFfa5a19): Colors.grey, 
+                        onPressed: (){},
+                      ),
+                      Text("Verified Accounts", style: TextStyle(fontSize: 14.0, color: Colors.black))
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.location_on), 
+                        color: Color(0xFFfa5a19), 
+                        onPressed: (){},
+                      ),
+                      Text("Jakarta, Indonesia",style: TextStyle(fontSize: 14.0, color: Colors.black))
+                    ],
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15.0),
+                child: CarouselSlider(
+                  items: [1,2,3,4,5].map((i) {
+                  return Builder(
+                    builder: (BuildContext context){
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 5.0),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(20.0)
+                        ),
+                        child: Text('my photo $i', style: TextStyle(fontSize: 16.0),)
+                      );
+                    }
+                  );
+                }).toList(), 
+                options: CarouselOptions(
+                  height: 200.0,
+                  enableInfiniteScroll: false,
+                  scrollDirection: Axis.horizontal,
+                  enlargeCenterPage: true,
+                  initialPage: 0
+                )),
+              ),
+              
             ],
           ),
         ),
