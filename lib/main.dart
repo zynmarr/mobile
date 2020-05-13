@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'auth/login.dart';
 import 'auth/register.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -164,6 +165,8 @@ class _HomePageState extends State<HomePage> {
   //     widget.signOut();
   //   });
   // }
+
+  GlobalKey _bottomNavigationKey = GlobalKey();
 
   String username = "";
 

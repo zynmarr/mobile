@@ -24,6 +24,7 @@ dependencies:
   getflutter: ^1.0.11
   font_awesome_flutter: ^8.8.1
   path_provider: ^1.6.5
+  curved_navigation_bar: ^0.3.2
   flutter:
     sdk: flutter
 

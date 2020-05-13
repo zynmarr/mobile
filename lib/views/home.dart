@@ -198,7 +198,7 @@ class _HomeState extends State<Home> {
                                           MediaQuery.of(context).size.height,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(50),
-                                        color: Colors.green,
+                                        color: Colors.white,
                                         border: Border.all(
                                           color: Colors.grey,
                                           style: BorderStyle.solid,
@@ -288,14 +288,19 @@ class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
-    path.lineTo(0, size.height / 2);
+    path.lineTo(0, size.height);
     // var controllPoint = Offset(50, size.height);
     // var endPoint = Offset(size.width/2, size.height);
     // path.quadraticBezierTo(10, size.height, size.width/ 2, size.height);
     // path.lineTo(size.width, size.height);
-    path.quadraticBezierTo(size.width/2, size.height*0.75,size.width, size.height);
+    // path.lineTo(size.width/2, size.height);
+    path.lineTo(size.width-187, size.height);
+    path.quadraticBezierTo(size.width/2, size.height-50,size.width-48, size.height);
+    // path.lineTo(0, size.height);
+    // path.lineTo(size.width, size.height);
     path.lineTo(size.width, size.height);
     path.lineTo(size.width, 0);
+    // path.quadraticBezierTo(size.width/2, size.height-50,size.width, size.height);
     path.close();
 
     return path;
