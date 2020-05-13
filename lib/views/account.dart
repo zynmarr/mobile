@@ -109,7 +109,7 @@ class _AccountState extends State<Account> {
                         color: verified == true ? Color(0xFFfa5a19): Colors.grey, 
                         onPressed: (){},
                       ),
-                      Text("Verified Accounts", style: TextStyle(fontSize: 14.0, color: Colors.black))
+                      Text(verified == true ? "Verified Accounts" : "Unverified Account", style: TextStyle(fontSize: 14.0, color: Colors.black))
                     ],
                   ),
                   Column(
@@ -127,18 +127,20 @@ class _AccountState extends State<Account> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15.0),
                 child: CarouselSlider(
-                  items: [1,2,3,4,5].map((i) {
+                  items: imageList.map((i) {
                   return Builder(
                     builder: (BuildContext context){
                       return Container(
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 5.0),
                         alignment: Alignment.center,
+                        
                         decoration: BoxDecoration(
                           color: Colors.amber,
-                          borderRadius: BorderRadius.circular(20.0)
+                          borderRadius: BorderRadius.circular(20.0),
+                          image: DecorationImage(image: AssetImage(i), fit: BoxFit.cover)
                         ),
-                        child: Text('my photo $i', style: TextStyle(fontSize: 16.0),)
+                        child: Text('my photo $i', style: TextStyle(fontSize: 16.0, color: Colors.white),)
                       );
                     }
                   );
