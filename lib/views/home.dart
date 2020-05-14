@@ -132,7 +132,7 @@ class _HomeState extends State<Home> {
                         layout: SwiperLayout.TINDER,
                         itemCount: nameList.length,
                         scrollDirection: Axis.horizontal,
-                        loop: true,
+                        loop: false,
                       ),
                     ),
                     SizedBox(
