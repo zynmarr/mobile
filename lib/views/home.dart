@@ -1,15 +1,18 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
 import 'package:mita_apps/views/message.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter/rendering.dart';
+import 'package:dart_random_choice/dart_random_choice.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+
+
 
 class _HomeState extends State<Home> {
   @override
@@ -75,6 +78,10 @@ class _HomeState extends State<Home> {
       "assets/img/p3.jpg",
     ];
 
+    final _random = new Random(nameList.length);
+    String random = randomChoice<String>(nameList);
+    print(random);
+
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -125,7 +132,7 @@ class _HomeState extends State<Home> {
                       transform: Matrix4.translationValues(0.0, 0.0, 0.0),
                       child: Swiper(
                         itemBuilder: (BuildContext context, int index) {
-                          return infoUser(nameList[index], imageList[index]);
+                          return infoUser(random, imageList[index]);
                         },
                         itemHeight: MediaQuery.of(context).size.height / 1.6,
                         itemWidth: MediaQuery.of(context).size.height,
@@ -142,7 +149,7 @@ class _HomeState extends State<Home> {
                       height: MediaQuery.of(context).size.height / 8,
                       transform: Matrix4.translationValues(0.0, -30.0, 0.0),
                       // margin: EdgeInsets.only(bottom: 100),
-                      color: Colors.grey[400],
+                      // color: Colors.grey[400],
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
@@ -184,7 +191,7 @@ class _HomeState extends State<Home> {
                                 padding: EdgeInsets.all(2),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                                 child: Row(
                                   mainAxisAlignment:
@@ -294,8 +301,9 @@ class MyClipper extends CustomClipper<Path> {
     // path.quadraticBezierTo(10, size.height, size.width/ 2, size.height);
     // path.lineTo(size.width, size.height);
     // path.lineTo(size.width/2, size.height);
-    path.lineTo(size.width-187, size.height);
-    path.quadraticBezierTo(size.width/2, size.height-50,size.width-48, size.height);
+    path.lineTo(size.width - 187, size.height);
+    path.quadraticBezierTo(
+        size.width / 2, size.height - 50, size.width - 48, size.height);
     // path.lineTo(0, size.height);
     // path.lineTo(size.width, size.height);
     path.lineTo(size.width, size.height);

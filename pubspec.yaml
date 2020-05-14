@@ -25,6 +25,7 @@ dependencies:
   font_awesome_flutter: ^8.8.1
   path_provider: ^1.6.5
   curved_navigation_bar: ^0.3.2
+  dart_random_choice: ^0.0.2
   flutter:
     sdk: flutter
 
