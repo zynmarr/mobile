@@ -15,6 +15,10 @@ class Home extends StatefulWidget {
 
 
 class _HomeState extends State<Home> {
+
+  SwiperController _controller = SwiperController();
+  int _i = 0;
+
   @override
   Widget build(BuildContext context) {
     /* Card */
@@ -70,17 +74,26 @@ class _HomeState extends State<Home> {
       "Muammar Khadafi, 25",
       "Sean Potter, 19",
       "Jhon Erwill, 20",
+      "jhon",
+      "erwin",
     ];
 
     final List<String> imageList = [
       "assets/img/p1.jpg",
       "assets/img/p2.jpg",
       "assets/img/p3.jpg",
+      "assets/img/p2.jpg",
+      "assets/img/p1.jpg",
     ];
 
-    final _random = new Random(nameList.length);
-    String random = randomChoice<String>(nameList);
-    print(random);
+    var data = [
+      infoUser("Muammar Khadafi, 25", "assets/img/p1.jpg"),
+      infoUser("Sean Potter, 19", "assets/img/p2.jpg"),
+      infoUser("Jhon Erwill, 20", "assets/img/p3.jpg"),
+    ];
+
+    final _random = new Random();
+    var random = data[Random().nextInt(data.length)];
 
     return Scaffold(
       body: Container(
@@ -132,12 +145,21 @@ class _HomeState extends State<Home> {
                       transform: Matrix4.translationValues(0.0, 0.0, 0.0),
                       child: Swiper(
                         itemBuilder: (BuildContext context, int index) {
-                          return infoUser(random, imageList[index]);
+                          return random;
                         },
                         itemHeight: MediaQuery.of(context).size.height / 1.6,
                         itemWidth: MediaQuery.of(context).size.height,
                         layout: SwiperLayout.TINDER,
-                        itemCount: nameList.length,
+                        controller: _controller,
+                        itemCount: 1,
+                        physics: NeverScrollableScrollPhysics(),
+                        outer: true,
+                        onTap: (var bl){
+                          setState(() {
+                            print("Test");
+                          });
+                        },
+                        // control: SwiperControl(iconNext: Icons.info,),
                         scrollDirection: Axis.horizontal,
                         loop: false,
                       ),
@@ -218,6 +240,9 @@ class _HomeState extends State<Home> {
                                           color: Colors.red,
                                         ),
                                         onPressed: () {
+                                          setState(() {
+                                            _controller.next();
+                                          });
                                           print("Close");
                                         },
                                       ),
@@ -242,6 +267,9 @@ class _HomeState extends State<Home> {
                                           color: Colors.red,
                                         ),
                                         onPressed: () {
+                                          setState(() {
+                                            _controller.next();
+                                          });
                                           print("Love");
                                         },
                                       ),
