@@ -7,7 +7,7 @@ class RegisterWidget extends StatefulWidget {
 
 class _RegisterWidgetState extends State<RegisterWidget> {
   String username, password;
-    var _autovalidate = false;
+    var _autovalidate = true;
     bool _secureText = true;
     final _key = GlobalKey<FormState>();
   showHide() {

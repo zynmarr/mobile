@@ -8,18 +8,18 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-
-   String username, password;
-    var _autovalidate = false;
-    bool _secureText = true;
+  String username, password;
+  var _autovalidate = false;
+  bool _secureText = true;
 
   bool _remember = false;
-    final _key = GlobalKey<FormState>();
+  final _key = GlobalKey<FormState>();
   showHide() {
     setState(() {
       _secureText = !_secureText;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -61,7 +61,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width / 1.2,
-                  margin: EdgeInsets.only(top: 15, left: 20, right: 20, bottom: 40.0),
+                  margin: EdgeInsets.only(
+                      top: 15, left: 20, right: 20, bottom: 40.0),
                   child: TextFormField(
                     validator: (e) {
                       if (e.isEmpty) {
@@ -105,7 +106,8 @@ class _LoginWidgetState extends State<LoginWidget> {
               padding: const EdgeInsets.all(0.0),
               onPressed: () {
                 setState(() {
-                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext)=> HomePage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext) => HomePage()));
                 });
               },
               color: Colors.transparent,

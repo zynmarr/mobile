@@ -1,22 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mita_apps/main.dart';
 
 class SendMsg extends StatefulWidget {
   @override
   _SendMsgState createState() => _SendMsgState();
 }
 
-
-var sendPesan = "";
-var getpesan = null;
-
 class _SendMsgState extends State<SendMsg> {
+  var getpesan = 'adas';
 
-  Widget GetMsg(pesan) {
+  var sendPesan = '';
+
+  String pesan;
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   sendPesan = pesan;
+  // }
+
+  bool btnSend = false;
+
+  enable() {
+    setState(() {
+      btnSend = true;
+    });
+  }
+
+  bool _autoValidate = true;
+
+  final _key = GlobalKey<FormState>();
+
+  Widget getMsg(pesan) {
     return Container(
-      margin: EdgeInsets.only(top: 25, left: 15),
+      margin: EdgeInsets.only(top: 25, left: 10),
       padding: EdgeInsets.only(right: MediaQuery.of(context).size.width / 3),
       // height: MediaQuery.of(context).size.height,
+      alignment: Alignment.centerLeft,
       child: Baseline(
         baseline: 1,
         baselineType: TextBaseline.alphabetic,
@@ -37,10 +57,11 @@ class _SendMsgState extends State<SendMsg> {
     );
   }
 
-  Widget SendMsg() {
+  Widget sendMsg(send) {
     return Container(
       padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 3),
-      margin: EdgeInsets.only(top: 25),
+      margin: EdgeInsets.only(top: 25, right: 10),
+      alignment: Alignment.centerRight,
       child: Baseline(
         baseline: 2,
         baselineType: TextBaseline.alphabetic,
@@ -52,12 +73,27 @@ class _SendMsgState extends State<SendMsg> {
             color: Colors.lightBlue,
           ),
           child: Text(
-            "Ut non ipsum labore commodo. Fugiat exercitation velit consequat qui",
+            send,
             style: TextStyle(fontSize: 18),
           ),
         ),
       ),
     );
+  }
+
+  balon(){
+    return sendMsg(sendPesan);
+  }
+
+
+  kirim() {
+    if (_key.currentState.validate()) {
+      _key.currentState.save();
+      setState(() {
+        sendPesan = pesan;
+      });
+      print(pesan);
+    }
   }
 
   @override
@@ -81,9 +117,10 @@ class _SendMsgState extends State<SendMsg> {
               color: Colors.grey[200],
               child: Column(
                 // crossAxisAlignment: CrossAxisAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  GetMsg(getpesan),
-                  SendMsg(),
+                  getpesan.isEmpty ? SizedBox() : getMsg(getpesan),
+                  sendPesan.isEmpty ? SizedBox() : balon(),
                   // GetMsg(),
                 ],
               ),
@@ -97,43 +134,65 @@ class _SendMsgState extends State<SendMsg> {
               // margin: EdgeInsets.only(top: 18, bottom: 20),
               // color: Colors.white,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: btnSend == false
+                    ? MainAxisAlignment.center
+                    : MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                    height: 45,
-                    width: 300,
-                    padding: EdgeInsets.only(left: 5, right: 5),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      // borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: TextFormField(
-                      maxLines: 2,
-                      // maxLength: 50,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Ketik Pesan",
+                  Form(
+                    autovalidate: _autoValidate,
+                    key: _key,
+                    child: Container(
+                      height: 45,
+                      width: btnSend == false ? 370 : 300,
+                      padding: EdgeInsets.only(left: 5, right: 5),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        // borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: TextFormField(
+                        maxLines: 2,
+                        onChanged: (bool) {
+                          enable();
+                        },
+                        onSaved: (e) {
+                          pesan = e;
+                        },
+                        validator: (e) {
+                          if (e.isNotEmpty) {
+                            return null;
+                          }
+                          return null;
+                        },
+                        // maxLength: 50,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Ketik Pesan",
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    width: 55,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        print('Send Msg');
-                      },
-                      child: Icon(
-                        Icons.send,
-                        size: 30,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
+                  btnSend == false
+                      ? Padding(
+                          padding: EdgeInsets.all(0),
+                        )
+                      : Container(
+                          width: 55,
+                          height: 55,
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              kirim();
+                            },
+                            child: Icon(
+                              Icons.send,
+                              size: 30,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
                 ],
               ),
             ),
