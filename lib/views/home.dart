@@ -94,7 +94,6 @@ class _HomeState extends State<Home> {
       infoUser("Kevin, 20", "assets/img/p3.jpg"),
     ];
 
-    final _random = new Random();
     var random = data[Random().nextInt(data.length)];
 
     return Scaffold(

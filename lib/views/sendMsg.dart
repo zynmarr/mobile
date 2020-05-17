@@ -6,7 +6,60 @@ class SendMsg extends StatefulWidget {
   _SendMsgState createState() => _SendMsgState();
 }
 
+
+var sendPesan = "";
+var getpesan = null;
+
 class _SendMsgState extends State<SendMsg> {
+
+  Widget GetMsg(pesan) {
+    return Container(
+      margin: EdgeInsets.only(top: 25, left: 15),
+      padding: EdgeInsets.only(right: MediaQuery.of(context).size.width / 3),
+      // height: MediaQuery.of(context).size.height,
+      child: Baseline(
+        baseline: 1,
+        baselineType: TextBaseline.alphabetic,
+        child: Container(
+          // height: 20,
+          padding: EdgeInsets.all(5),
+
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: Colors.lightBlue,
+          ),
+          child: Text(
+            pesan,
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget SendMsg() {
+    return Container(
+      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 3),
+      margin: EdgeInsets.only(top: 25),
+      child: Baseline(
+        baseline: 2,
+        baselineType: TextBaseline.alphabetic,
+        child: Container(
+          // height: 20,
+          padding: EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: Colors.lightBlue,
+          ),
+          child: Text(
+            "Ut non ipsum labore commodo. Fugiat exercitation velit consequat qui",
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +77,16 @@ class _SendMsgState extends State<SendMsg> {
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
+              padding: EdgeInsets.only(top: 10),
               color: Colors.grey[200],
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  GetMsg(getpesan),
+                  SendMsg(),
+                  // GetMsg(),
+                ],
+              ),
             ),
           ),
           Positioned(
@@ -32,21 +94,24 @@ class _SendMsgState extends State<SendMsg> {
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 8,
-              padding: EdgeInsets.only(top: 18, bottom:20),
+              // margin: EdgeInsets.only(top: 18, bottom: 20),
               // color: Colors.white,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Container(
-                    height: MediaQuery.of(context).size.height,
+                    height: 45,
                     width: 300,
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 5, right: 5),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(50),
+                      // borderRadius: BorderRadius.circular(50),
                     ),
-                    child: TextField(
+                    child: TextFormField(
+                      maxLines: 2,
+                      // maxLength: 50,
                       decoration: InputDecoration(
+                        border: InputBorder.none,
                         hintText: "Ketik Pesan",
                       ),
                     ),
