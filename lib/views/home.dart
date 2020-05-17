@@ -17,7 +17,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   SwiperController _controller = SwiperController();
-  int _i = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +89,9 @@ class _HomeState extends State<Home> {
       infoUser("Muammar Khadafi, 25", "assets/img/p1.jpg"),
       infoUser("Sean Potter, 19", "assets/img/p2.jpg"),
       infoUser("Jhon Erwill, 20", "assets/img/p3.jpg"),
+      infoUser("Paull, 19", "assets/img/p2.jpg"),
+      infoUser("Wong, 25", "assets/img/p1.jpg"),
+      infoUser("Kevin, 20", "assets/img/p3.jpg"),
     ];
 
     final _random = new Random();
@@ -141,26 +143,29 @@ class _HomeState extends State<Home> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(left: 0),
-                      transform: Matrix4.translationValues(0.0, 0.0, 0.0),
+                      margin: EdgeInsets.only(left: 0,),
+                      transform: Matrix4.translationValues(0.0, 25.0, 0.0),
+                      height: MediaQuery.of(context).size.height / 1.6,
+                      width: MediaQuery.of(context).size.height,
                       child: Swiper(
                         itemBuilder: (BuildContext context, int index) {
                           return random;
                         },
-                        itemHeight: MediaQuery.of(context).size.height / 1.6,
-                        itemWidth: MediaQuery.of(context).size.height,
-                        layout: SwiperLayout.TINDER,
+                        itemHeight: MediaQuery.of(context).size.height,
+                        itemWidth: MediaQuery.of(context).size.width,
+                        layout: SwiperLayout.DEFAULT,
                         controller: _controller,
+                        // customLayoutOption: CustomLayoutOption(startIndex: 2,stateCount: 2),
                         itemCount: 1,
+                        index: 5,
                         physics: NeverScrollableScrollPhysics(),
-                        outer: true,
-                        onTap: (var bl){
-                          setState(() {
-                            print("Test");
-                          });
-                        },
-                        // control: SwiperControl(iconNext: Icons.info,),
-                        scrollDirection: Axis.horizontal,
+                        outer: false,
+                        // onTap: (var bl){
+                        //   setState(() {
+                        //     print("Test");
+                        //   });
+                        // },
+                        // scrollDirection: Axis.horizontal,
                         loop: false,
                       ),
                     ),
@@ -241,9 +246,10 @@ class _HomeState extends State<Home> {
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            _controller.next();
+                                            _controller.previous();
+                                            print('$random  Close');
                                           });
-                                          print("Close");
+                                          
                                         },
                                       ),
                                     ),
@@ -268,9 +274,10 @@ class _HomeState extends State<Home> {
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            _controller.next();
+                                            _controller.previous();
+                                            print('$random Love');
                                           });
-                                          print("Love");
+                                          
                                         },
                                       ),
                                     ),

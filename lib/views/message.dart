@@ -1,108 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
+import 'package:mita_apps/views/sendMsg.dart';
 
 class Message extends StatefulWidget {
   @override
   _MessageState createState() => _MessageState();
-}
-
-Widget showMessage(String name, image, count, time, message) {
-  return Container(
-    height: 82,
-    child: RaisedButton(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-          side: BorderSide(style: BorderStyle.solid, color: Colors.grey[300])),
-      onPressed: () {},
-      child: Row(
-        children: <Widget>[
-          Container(
-            child: Container(
-              width: 65,
-              height: 65,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(150),
-                image: DecorationImage(
-                  image: NetworkImage(image),
-                  fit: BoxFit.fill,
-                ),
-                // border: Border.all(color: Colors.lightGreenAccent[400], width: 2.0),
-              ),
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: Container(
-                  margin: EdgeInsets.only(right: 0, bottom: 0),
-                  width: 20,
-                  height: 20,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    gradient: LinearGradient(
-                      colors: [Color(0xFFffc247), Color(0xFFff249c)],
-                      begin: Alignment.centerRight,
-                      end: Alignment.centerLeft,
-                    ),
-                    border: Border.all(color: Colors.white, width: 2.0),
-                  ),
-                  child: Center(
-                    child: Text(
-                      count,
-                      style: TextStyle(
-                          fontSize: 10,
-                          fontFamily: "Viga",
-                          color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10),
-          ),
-          Expanded(
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(top: 18),
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      name,
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        fontFamily: "Viga",
-                        fontWeight: FontWeight.w400,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 5),
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      message,
-                      style: TextStyle(
-                        fontSize: 13.0,
-                        color: Colors.grey,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Text(
-            time,
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 10,
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
 }
 
 Widget searchUser(String name, image) {
@@ -180,6 +82,109 @@ List list = [
 ];
 
 class _MessageState extends State<Message> {
+  Widget showMessage(String name, image, count, time, message) {
+    return Container(
+      height: 82,
+      child: RaisedButton(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+            side:
+                BorderSide(style: BorderStyle.solid, color: Colors.grey[300])),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext) => SendMsg()));
+        },
+        child: Row(
+          children: <Widget>[
+            Container(
+              child: Container(
+                width: 65,
+                height: 65,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(150),
+                  image: DecorationImage(
+                    image: NetworkImage(image),
+                    fit: BoxFit.fill,
+                  ),
+                  // border: Border.all(color: Colors.lightGreenAccent[400], width: 2.0),
+                ),
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: Container(
+                    margin: EdgeInsets.only(right: 0, bottom: 0),
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      gradient: LinearGradient(
+                        colors: [Color(0xFFffc247), Color(0xFFff249c)],
+                        begin: Alignment.centerRight,
+                        end: Alignment.centerLeft,
+                      ),
+                      border: Border.all(color: Colors.white, width: 2.0),
+                    ),
+                    child: Center(
+                      child: Text(
+                        count,
+                        style: TextStyle(
+                            fontSize: 10,
+                            fontFamily: "Viga",
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10),
+            ),
+            Expanded(
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: 18),
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        name,
+                        style: TextStyle(
+                          fontSize: 17.0,
+                          fontFamily: "Viga",
+                          fontWeight: FontWeight.w400,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 5),
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        message,
+                        style: TextStyle(
+                          fontSize: 13.0,
+                          color: Colors.grey,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Text(
+              time,
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 10,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -206,7 +211,8 @@ class _MessageState extends State<Message> {
                     .toList();
               },
               overlaySearchListItemBuilder: (item) {
-                return searchUser(item, "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRinY4vLmj_JVTSedukEYnvTIWLVZFvY__GWupSreUQEkVnNw2H&usqp=CAU");
+                return searchUser(item,
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRinY4vLmj_JVTSedukEYnvTIWLVZFvY__GWupSreUQEkVnNw2H&usqp=CAU");
               },
               onItemSelected: (item) {
                 setState(() {
@@ -247,7 +253,6 @@ class _MessageState extends State<Message> {
                     "Kyle",
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRinY4vLmj_JVTSedukEYnvTIWLVZFvY__GWupSreUQEkVnNw2H&usqp=CAU",
                   ),
-                  
                 ],
               ),
             ),
@@ -257,9 +262,10 @@ class _MessageState extends State<Message> {
               decoration: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
-                      color: Colors.grey[300],
-                      style: BorderStyle.solid,
-                      width: 2.0,),
+                    color: Colors.grey[300],
+                    style: BorderStyle.solid,
+                    width: 2.0,
+                  ),
                 ),
               ),
             ),
