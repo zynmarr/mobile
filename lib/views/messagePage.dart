@@ -79,7 +79,15 @@ class _MessagePageState extends State<MessagePage> {
                 itemCount: likes.length,
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext)=> SendMsg(user: likes[index],))),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext) => SendMsg(
+                                    user: likes[index],
+                                  )));
+                                  print(likes[index].id);
+                    },
                     child: onlineUser(likes[index].name, likes[index].imageUrl,
                         likes[index].online),
                   );

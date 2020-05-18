@@ -5,12 +5,14 @@ class Message {
   final String time;
   final String text;
   final bool unread;
+  final String relation;
 
   Message({
     this.sender,
     this.time,
     this.text,
     this.unread,
+    this.relation,
   });
 }
 
@@ -94,29 +96,34 @@ List<Message> messages = [
     time: '04.00 PM',
     text: 'Hallo Apa kabar?',
     unread: true,
+    relation: 'shopia',
   ),
   Message(
     sender: shopia,
     time: '04.02 PM',
     text: 'Sehat selalu',
     unread: true,
+    relation: 'Current User'
   ),
   Message(
     sender: currentUser,
     time: '04.10 PM',
     text: 'Lagi Ngapain?',
     unread: true,
+    relation: 'shopia',
   ),
   Message(
     sender: shopia,
     time: '04.15 PM',
     text: 'Lagi duduk ajaa',
     unread: true,
+    relation: 'Current User'
   ),
   Message(
     sender: shopia,
     time: '04.15 PM',
     text: 'And Youu??',
     unread: true,
+    relation: 'Current User'
   ),
 ];

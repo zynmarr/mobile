@@ -51,7 +51,7 @@ class _SendMsgState extends State<SendMsg> {
 
   Widget sendMsg(send) {
     return Container(
-      margin: EdgeInsets.only(top: 25, right: 10),
+      margin: EdgeInsets.only(top: 30, right: 10),
       alignment: Alignment.centerRight,
       child: Baseline(
         baseline: 2,
@@ -109,7 +109,9 @@ class _SendMsgState extends State<SendMsg> {
                 itemBuilder: (BuildContext context, int index) {
                   final message = messages[index];
                   final bool isMe = message.sender.id == currentUser.id;
-                  return isMe ? sendMsg(message.text) : getMsg(message.text);
+                  final bool notMe = message.sender.id == widget.user.id;
+                  final bool relasi = message.relation == widget.user.name;
+                  return isMe ? relasi ? sendMsg(message.text) : SizedBox() : notMe ? getMsg(message.text) : SizedBox();
                 },
               ),
             ),
