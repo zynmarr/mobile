@@ -1,27 +1,23 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
-import 'package:mita_apps/views/message.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:dart_random_choice/dart_random_choice.dart';
+import 'package:mita_apps/models/message_model.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-
-
 class _HomeState extends State<Home> {
-
   SwiperController _controller = SwiperController();
 
   @override
   Widget build(BuildContext context) {
     /* Card */
-    Widget infoUser(String listName, image) {
+    Widget infoUser(String listName, image, int old) {
       return GFCard(
         height: MediaQuery.of(context).size.height,
         image: Image.asset(
@@ -35,7 +31,7 @@ class _HomeState extends State<Home> {
           margin: EdgeInsets.all(10),
           // color: Colors.green,
           title: Text(
-            listName,
+            '$listName, $old',
             style: TextStyle(
               fontFamily: "Viga",
               fontSize: 20,
@@ -68,33 +64,6 @@ class _HomeState extends State<Home> {
         ),
       );
     }
-
-    final List<String> nameList = [
-      "Muammar Khadafi, 25",
-      "Sean Potter, 19",
-      "Jhon Erwill, 20",
-      "jhon",
-      "erwin",
-    ];
-
-    final List<String> imageList = [
-      "assets/img/p1.jpg",
-      "assets/img/p2.jpg",
-      "assets/img/p3.jpg",
-      "assets/img/p2.jpg",
-      "assets/img/p1.jpg",
-    ];
-
-    var data = [
-      infoUser("Muammar Khadafi, 25", "assets/img/p1.jpg"),
-      infoUser("Sean Potter, 19", "assets/img/p2.jpg"),
-      infoUser("Jhon Erwill, 20", "assets/img/p3.jpg"),
-      infoUser("Paull, 19", "assets/img/p2.jpg"),
-      infoUser("Wong, 25", "assets/img/p1.jpg"),
-      infoUser("Kevin, 20", "assets/img/p3.jpg"),
-    ];
-
-    var random = data[Random().nextInt(data.length)];
 
     return Scaffold(
       body: Container(
@@ -142,29 +111,26 @@ class _HomeState extends State<Home> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(left: 0,),
+                      margin: EdgeInsets.only(
+                        left: 0,
+                      ),
                       transform: Matrix4.translationValues(0.0, 25.0, 0.0),
                       height: MediaQuery.of(context).size.height / 1.6,
                       width: MediaQuery.of(context).size.height,
                       child: Swiper(
                         itemBuilder: (BuildContext context, int index) {
-                          return random;
+                          return infoUser(users[index].name, users[index].imageUrl, users[index].old);
                         },
                         itemHeight: MediaQuery.of(context).size.height,
                         itemWidth: MediaQuery.of(context).size.width,
                         layout: SwiperLayout.DEFAULT,
                         controller: _controller,
-                        // customLayoutOption: CustomLayoutOption(startIndex: 2,stateCount: 2),
-                        itemCount: 1,
-                        index: 5,
+                        itemCount: users.length,
                         physics: NeverScrollableScrollPhysics(),
                         outer: false,
-                        // onTap: (var bl){
-                        //   setState(() {
-                        //     print("Test");
-                        //   });
-                        // },
-                        // scrollDirection: Axis.horizontal,
+                        onTap: (var bl) {
+                          print("new profile");
+                        },
                         loop: false,
                       ),
                     ),
@@ -245,10 +211,9 @@ class _HomeState extends State<Home> {
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            _controller.previous();
-                                            print('$random  Close');
+                                            _controller.next();
+                                            print('Close');
                                           });
-                                          
                                         },
                                       ),
                                     ),
@@ -273,10 +238,9 @@ class _HomeState extends State<Home> {
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            _controller.previous();
-                                            print('$random Love');
+                                            _controller.next();
+                                            print('Love');
                                           });
-                                          
                                         },
                                       ),
                                     ),

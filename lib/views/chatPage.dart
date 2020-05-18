@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mita_apps/main.dart';
+import 'package:mita_apps/models/message_model.dart';
+import 'package:mita_apps/models/user_model.dart';
 
 class SendMsg extends StatefulWidget {
+  final User user;
+  SendMsg({this.user});
+
   @override
   _SendMsgState createState() => _SendMsgState();
 }
 
 class _SendMsgState extends State<SendMsg> {
-  var getpesan = 'adas';
-
-  var sendPesan = '';
-
   String pesan;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   sendPesan = pesan;
-  // }
 
   bool btnSend = false;
 
@@ -33,20 +29,16 @@ class _SendMsgState extends State<SendMsg> {
 
   Widget getMsg(pesan) {
     return Container(
-      margin: EdgeInsets.only(top: 25, left: 10),
-      padding: EdgeInsets.only(right: MediaQuery.of(context).size.width / 3),
-      // height: MediaQuery.of(context).size.height,
+      margin: EdgeInsets.only(top: 30, left: 10),
       alignment: Alignment.centerLeft,
       child: Baseline(
         baseline: 1,
         baselineType: TextBaseline.alphabetic,
         child: Container(
-          // height: 20,
-          padding: EdgeInsets.all(5),
-
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: Colors.lightBlue,
+            color: Colors.white,
           ),
           child: Text(
             pesan,
@@ -59,18 +51,16 @@ class _SendMsgState extends State<SendMsg> {
 
   Widget sendMsg(send) {
     return Container(
-      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 3),
       margin: EdgeInsets.only(top: 25, right: 10),
       alignment: Alignment.centerRight,
       child: Baseline(
         baseline: 2,
         baselineType: TextBaseline.alphabetic,
         child: Container(
-          // height: 20,
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: Colors.lightBlue,
+            color: Colors.orange[300],
           ),
           child: Text(
             send,
@@ -81,18 +71,10 @@ class _SendMsgState extends State<SendMsg> {
     );
   }
 
-  balon(){
-    return sendMsg(sendPesan);
-  }
-
-
   kirim() {
     if (_key.currentState.validate()) {
       _key.currentState.save();
-      setState(() {
-        sendPesan = pesan;
-      });
-      print(pesan);
+      setState(() {});
     }
   }
 
@@ -100,12 +82,19 @@ class _SendMsgState extends State<SendMsg> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Muammar Khadafi'),
-        // actions: <Widget>[
-        //   Icon(Icons.list),
-        // ],
-        // iconTheme: IconThemeData(color: Colors.black),
-        // actionsIconTheme: IconThemeData(color: Colors.white),
+        title: Text(widget.user.name),
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.more_vert,
+              size: 30.0,
+            ),
+            onPressed: () {},
+          ),
+        ],
+        iconTheme: IconThemeData(color: Colors.black),
+        actionsIconTheme: IconThemeData(color: Colors.white),
       ),
       body: Stack(
         children: <Widget>[
@@ -115,14 +104,13 @@ class _SendMsgState extends State<SendMsg> {
               height: MediaQuery.of(context).size.height,
               padding: EdgeInsets.only(top: 10),
               color: Colors.grey[200],
-              child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.center,
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  getpesan.isEmpty ? SizedBox() : getMsg(getpesan),
-                  sendPesan.isEmpty ? SizedBox() : balon(),
-                  // GetMsg(),
-                ],
+              child: ListView.builder(
+                itemCount: messages.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final message = messages[index];
+                  final bool isMe = message.sender.id == currentUser.id;
+                  return isMe ? sendMsg(message.text) : getMsg(message.text);
+                },
               ),
             ),
           ),

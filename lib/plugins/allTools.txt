@@ -1,0 +1,96 @@
+
+Plugin Form Search =
+
+Widget searchUser(String name, image) {
+  return Container(
+    height: 70,
+    child: Row(
+      children: <Widget>[
+        Container(
+          child: Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(150),
+              image: DecorationImage(
+                image: NetworkImage(image),
+                fit: BoxFit.fill,
+              ),
+              border: Border.all(color: Colors.lightGreenAccent[400], width: 2.0),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+        ),
+        Container(
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(top: 25),
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  name,
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    fontFamily: "Viga",
+                    fontWeight: FontWeight.w400,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+GFSearchBar(
+  searchList: list,
+  searchQueryBuilder: (query, list) {
+    return list
+        .where((item) =>
+            item.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+  },
+  overlaySearchListItemBuilder: (item) {
+    return searchUser(item,
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRinY4vLmj_JVTSedukEYnvTIWLVZFvY__GWupSreUQEkVnNw2H&usqp=CAU");
+  },
+  onItemSelected: (item) {
+    setState(() {
+      print('$item');
+    });
+  },
+),
+
+
+Untuk Menerima Jumlah Pesan =
+Align(
+  alignment: Alignment.bottomRight,
+  child: Container(
+    margin: EdgeInsets.only(right: 0, bottom: 0),
+    width: 20,
+    height: 20,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(100),
+      gradient: LinearGradient(
+        colors: [Color(0xFFffc247), Color(0xFFff249c)],
+        begin: Alignment.centerRight,
+        end: Alignment.centerLeft,
+      ),
+      border: Border.all(color: Colors.white, width: 2.0),
+    ),
+    child: Center(
+      child: Text(
+        "count",
+        style: TextStyle(
+            fontSize: 10,
+            fontFamily: "Viga",
+            color: Colors.white),
+      ),
+    ),
+  ),
+),

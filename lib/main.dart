@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mita_apps/views/account.dart';
 import 'package:mita_apps/views/home.dart';
-import 'package:mita_apps/views/message.dart';
+import 'package:mita_apps/views/messagePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'auth/login.dart';
@@ -166,8 +166,6 @@ class _HomePageState extends State<HomePage> {
   //   });
   // }
 
-  GlobalKey _bottomNavigationKey = GlobalKey();
-
   String username = "";
 
   getPref() async {
@@ -192,7 +190,7 @@ class _HomePageState extends State<HomePage> {
           physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
             Home(),
-            Message(),
+            MessagePage(),
             Account(),
           ],
         ),
