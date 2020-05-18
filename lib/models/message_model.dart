@@ -65,6 +65,12 @@ List<User> likes = [james,william,shopia,yunul,steven];
 
 List<Message> chats = [
   Message(
+    sender: shopia,
+    time: '2:30 AM',
+    text: 'I like you',
+    unread: true,
+  ),
+  Message(
     sender: yunul,
     time: '5:30 AM',
     text: 'Hey How Are you?',
@@ -75,12 +81,6 @@ List<Message> chats = [
     time: '8:30 AM',
     text: 'Hi',
     unread: false,
-  ),
-  Message(
-    sender: shopia,
-    time: '2:30 AM',
-    text: 'I like you',
-    unread: true,
   ),
   Message(
     sender: steven,
