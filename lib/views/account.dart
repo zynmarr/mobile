@@ -16,10 +16,10 @@ class _AccountState extends State<Account> {
   // }
   bool verified = false;
   final List<String> imageList = [
-      "assets/img/p1.jpg",
-      "assets/img/p2.jpg",
-      "assets/img/p3.jpg",
-    ];
+    "assets/img/p1.jpg",
+    "assets/img/p2.jpg",
+    "assets/img/p3.jpg",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +68,7 @@ class _AccountState extends State<Account> {
                       color: Color(0xFFfa5a19),
                     ),
                     child: IconButton(
-                      onPressed: (){},
+                      onPressed: () {},
                       icon: Icon(Icons.add_a_photo,
                           size: 14.0, color: Colors.white),
                     ),
@@ -105,21 +105,27 @@ class _AccountState extends State<Account> {
                   Column(
                     children: <Widget>[
                       IconButton(
-                        icon: Icon(Icons.verified_user), 
-                        color: verified == true ? Color(0xFFfa5a19): Colors.grey, 
-                        onPressed: (){},
+                        icon: Icon(Icons.verified_user),
+                        color:
+                            verified == true ? Color(0xFFfa5a19) : Colors.grey,
+                        onPressed: () {},
                       ),
-                      Text(verified == true ? "Verified Accounts" : "Unverified Account", style: TextStyle(fontSize: 14.0, color: Colors.black))
+                      Text(
+                          verified == true
+                              ? "Verified Accounts"
+                              : "Unverified Account",
+                          style: TextStyle(fontSize: 14.0, color: Colors.black))
                     ],
                   ),
                   Column(
                     children: <Widget>[
                       IconButton(
-                        icon: Icon(Icons.location_on), 
-                        color: Color(0xFFfa5a19), 
-                        onPressed: (){},
+                        icon: Icon(Icons.location_on),
+                        color: Color(0xFFfa5a19),
+                        onPressed: () {},
                       ),
-                      Text("Jakarta, Indonesia",style: TextStyle(fontSize: 14.0, color: Colors.black))
+                      Text("Jakarta, Indonesia",
+                          style: TextStyle(fontSize: 14.0, color: Colors.black))
                     ],
                   ),
                 ],
@@ -128,32 +134,32 @@ class _AccountState extends State<Account> {
                 padding: const EdgeInsets.symmetric(vertical: 15.0),
                 child: CarouselSlider(
                   items: imageList.map((i) {
-                  return Builder(
-                    builder: (BuildContext context){
+                    return Builder(builder: (BuildContext context) {
                       return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 5.0),
-                        alignment: Alignment.center,
-                        
-                        decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(20.0),
-                          image: DecorationImage(image: AssetImage(i), fit: BoxFit.cover)
-                        ),
-                        child: Text('my photo $i', style: TextStyle(fontSize: 16.0, color: Colors.white),)
-                      );
-                    }
-                  );
-                }).toList(), 
-                options: CarouselOptions(
-                  height: 200.0,
-                  enableInfiniteScroll: false,
-                  scrollDirection: Axis.horizontal,
-                  enlargeCenterPage: true,
-                  initialPage: 0
-                )),
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: BorderRadius.circular(20.0),
+                              image: DecorationImage(
+                                  image: AssetImage(i), fit: BoxFit.cover)),
+                          child: Text(
+                            'my photo $i',
+                            style:
+                                TextStyle(fontSize: 16.0, color: Colors.white),
+                          ));
+                    });
+                  }).toList(),
+                  options: CarouselOptions(
+                    height: 200.0,
+                    enableInfiniteScroll: false,
+                    scrollDirection: Axis.horizontal,
+                    enlargeCenterPage: true,
+                    initialPage: 0,
+                  ),
+                ),
               ),
-              
             ],
           ),
         ),

@@ -49,22 +49,51 @@ class _SendMsgState extends State<SendMsg> {
     );
   }
 
-  Widget sendMsg(send) {
+  Widget sendMsg(send, bool read) {
     return Container(
       margin: EdgeInsets.only(top: 30, right: 10),
+      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 3),
       alignment: Alignment.centerRight,
       child: Baseline(
         baseline: 2,
         baselineType: TextBaseline.alphabetic,
         child: Container(
+          // width: MediaQuery.of(context).size.width / 2,
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: Colors.orange[300],
+            color: Colors.pink[100],
           ),
-          child: Text(
-            send,
-            style: TextStyle(fontSize: 18),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              Text(
+                send,
+                style: TextStyle(fontSize: 18),
+              ),
+              Container(
+                // alignment: Alignment.bottomRight,
+                width: 100,
+                margin: EdgeInsets.only(top: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Text(
+                      "12:20 AM",
+                      style: TextStyle(
+                        fontSize: 11,
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.all(3),),
+                    Icon(
+                      Icons.done_all,
+                      color: read == false ? Colors.grey : Colors.orange,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -111,7 +140,9 @@ class _SendMsgState extends State<SendMsg> {
                   final bool isMe = message.sender.id == currentUser.id;
                   final bool notMe = message.sender.id == widget.user.id;
                   final bool relasi = message.relation == widget.user.name;
-                  return isMe ? relasi ? sendMsg(message.text) : SizedBox() : notMe ? getMsg(message.text) : SizedBox();
+                  return isMe
+                      ? relasi ? sendMsg(message.text, message.unread) : SizedBox()
+                      : notMe ? getMsg(message.text) : SizedBox();
                 },
               ),
             ),

@@ -19,44 +19,72 @@ class Message {
 final User currentUser = User(
   id: 0,
   name: 'Current User',
+  gender: 'Laki-Laki',
   old: 20,
+  jobs: 'App Design',
   imageUrl: 'assets/img/users/user1.jpg',
   online: true,
+  verified: true,
+  location: 'Indonesia, Aceh, Aceh Besar',
 );
 final User james = User(
   id: 1,
   name: 'james',
+  gender: 'Laki-Laki',
   old: 18,
+  about: "Jadilah pribadi yang menantang masa depan, bukan pengecut yang aman di zona nyaman",
+  jobs: 'Web Developer',
   imageUrl: 'assets/img/users/user2.jpg',
   online: false,
+  verified: true,
+  location: 'Indonesa, Medan',
 );
 final User steven = User(
   id: 2,
   name: 'steven',
+  gender: 'Laki-Laki',
   old: 22,
+  jobs: 'Universitas Abulyatama',
   imageUrl: 'assets/img/users/user3.jpg',
   online: true,
+  verified: true,
+  location: 'Indonesia, Jawa barat',
 );
 final User william = User(
   id: 3,
   name: 'william',
+  gender: 'Laki-Laki',
+  about: "Bila gagal, ya coba lagi! Sampai kapan? Sampai sukses!",
   old: 19,
+  jobs: 'Digital Marketing',
   imageUrl: 'assets/img/users/user4.jpg',
   online: true,
+  verified: false,
+  location: 'Indonesia, Jakarta, Jakarta Pusat'
 );
 final User yunul = User(
   id: 4,
   name: 'yunul',
+  gender: 'Laki-Laki',
   old: 21,
+  about: "Jadilah pribadi yang menantang masa depan, bukan pengecut yang aman di zona nyaman",
+  jobs: 'App Developer',
   imageUrl: 'assets/img/users/user5.jpg',
   online: false,
+  verified: false,
+  location: 'Malaysia, pinang',
 );
 final User shopia = User(
   id: 5,
   name: 'shopia',
+  gender: 'Perempuan',
   old: 18,
+  about: "Kegagalan adalah sebuah proses menuju kesuksesan",
+  jobs: 'Universitas UIN Raniry',
   imageUrl: 'assets/img/users/user6.jpg',
   online: true,
+  verified: true,
+  location: 'Amerika Serikat, San Diego'
 );
 
 List<User> users = [james,william,shopia,yunul,steven];
@@ -108,7 +136,7 @@ List<Message> messages = [
   Message(
     sender: currentUser,
     time: '04.10 PM',
-    text: 'Lagi Ngapain?',
+    text: 'Do cillum nisi est ut exercitation dolor duis.',
     unread: true,
     relation: 'shopia',
   ),
@@ -125,5 +153,12 @@ List<Message> messages = [
     text: 'And Youu??',
     unread: true,
     relation: 'Current User'
+  ),
+  Message(
+    sender: currentUser,
+    time: '04.10 PM',
+    text: 'Jadilah pribadi yang menantang masa depan, bukan pengecut yang aman di zona nyaman',
+    unread: false,
+    relation: 'shopia',
   ),
 ];
